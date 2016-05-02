@@ -1,0 +1,214 @@
+{% extends "codeapp/base_site.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>Dataset Description</h2>
+  </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dataset Format</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <p class="text-justify">The RGB-D datasets available were captured using the Optitrack Motion capture systems and a Kinect depth camera. A single dataset consist in a gzipped tar file content two folder and three text file. The files rgb.txt and depth.txt list a color images and depth maps grouped into the folders named rgb and depth, respectively.</p>
+
+                            <p class="text-justify">All data are stored as 640×480 images in PNG format. The color image as  8-bit RGB image and the depth map as 16-bit monochrome images. In the depth map  a pixel value of 0 means missing value/no data in the acquisition process, and all other depth values are scaled by 5000 to denote a distance of 1 meter of the camera.</p>
+
+                            <p class="text-justify">The file groundtruth.txt containing the position of the optical center of the color camera (translation in float format tx  ty  tz ) and orientation (in quaternion float format qx qy qz qw ) of the camera in a fixed coordinate frame with respect to the world origin defined by the Optitrack motion capture system. Each line in this text file contains a single  camera pose with the format : timestamp tx ty tz qx qy qz qw where timestamp represent a number of seconds since the Unix epoch.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static 'codeapp/img/scene_setup.gif' %}" class="img-responsive">
+                                <div class="caption">
+                                    <p class="text-center">Scene acquisition setup,  Optitrack motion cameras in green, Microsoft Kinect in blue.</p>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img src="{% static 'codeapp/img/dataset_format.png' %}" class="img-responsive">
+                                <div class="caption">
+                                    <p class="text-center">Dataset File example</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static 'codeapp/img/scene_setup.gif' %}" class="img-responsive">
+                                <div class="caption">
+                                    <p class="text-center">Scene acquisition setup,  Optitrack motion cameras in green, Microsoft Kinect in blue.</p>
+                                </div>
+                            </div>
+                        </div> -->
+<!--                         <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static 'codeapp/img/dataset_format.png' %}" class="img-responsive">
+                                <div class="caption">
+                                    <p class="text-center">Dataset File example</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dataset: ANALISYS</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <p>There  is  also  a  sequence  built  for  the  analysis  purpose. It consists of eight poses,  each pose is setted for one of the factor-level combination as it shown in the analysis.gif. At each pose,10 captures were performed totaling 80 captures. For each dataset, it is provided the RGB-D images and the Kinect’s camera pose. Both data are synchronized by recording a timestamps at each acquisition.</p>
+                            <p><strong>Filename:</strong> ANALYSIS.zip</p>
+                            <p><strong>Archive file format:</strong> A .ZIP file containing three text files and eight directories that have been compressed. Each directory have a rgb and depth folders for  the corresponding pose.</p>
+                            <p><strong>Packing list:</strong>
+                                <ul>
+                                    <li><strong>rgb folder:</strong> 81 - 8-bit RGB images</li>
+                                    <li><strong>depth folder:</strong> 81 - 16-bit monochrome images</li>
+                                    <li><strong>Text files:</strong> rgb.txt, depth.txt, poses_images.txt</li>
+                                </ul>
+                            </p>
+                            <p><strong>File size:</strong> 41.4 MB</p>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/analysis_dataset_setup.gif' %}" class="img-responsive img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="{% url 'codeapp:dataset' %}?name=ANALYSIS.zip">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dataset: SCALE</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>Dataset where the images acquired varies only one factor, in this case, the scale factor.</p>
+                            <p><strong>Filename:</strong> SCALE.zip</p>
+                            <p><strong>Archive file format:</strong> A .ZIP file containing three text files and two directories that have been compressed.</p>
+                            <p><strong>Packing list:</strong>
+                                <ul>
+                                    <li><strong>rgb folder:</strong> 343 - 8-bit RGB images</li>
+                                    <li><strong>depth folder:</strong> 343 - 16-bit monochrome images</li>
+                                    <li><strong>Text files:</strong> rgb.txt, depth.txt, groundtruth.txt</li>
+                                </ul>
+                            </p>
+                            <p><strong>File size:</strong> 177.9 MB</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/scale_dataset_example.gif' %}" class="img-responsive img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="{% url 'codeapp:dataset' %}?name=SCALE.zip">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dataset: TRANSLATION</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <p>Dataset where the images acquired varies only one factor, in this case, the translation factor.</p>
+                            <p><strong>Filename:</strong> TRANSLATION.zip</p>
+                            <p><strong>Archive file format:</strong> A .ZIP file containing three text files and two directories that have been compressed.</p>
+                            <p><strong>Packing list:</strong>
+                                <ul>
+                                    <li><strong>rgb folder:</strong> 483 - 8-bit RGB images</li>
+                                    <li><strong>depth folder:</strong> 483 - 16-bit monochrome images</li>
+                                    <li><strong>Text files:</strong> rgb.txt, depth.txt, groundtruth.txt</li>
+                                </ul>
+                            </p>
+                            <p><strong>File size:</strong> 279.4 MB</p>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/translate_dataset_example.gif' %}" class="img-responsive img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="{% url 'codeapp:dataset' %}?name=TRANSLATION.zip">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dataset: ROTATION</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <p>Dataset where the images acquired varies only one factor, in this case, the translation factor.</p>
+                            <p><strong>Filename:</strong> ROTATION.zip</p>
+                            <p><strong>Archive file format:</strong> A .ZIP file containing three text files and two directories that have been compressed.</p>
+                            <p><strong>Packing list:</strong>
+                                <ul>
+                                    <li><strong>rgb folder:</strong> 503 - 8-bit RGB images</li>
+                                    <li><strong>depth folder:</strong> 503 - 16-bit monochrome images</li>
+                                    <li><strong>Text files:</strong> rgb.txt, depth.txt, groundtruth.txt</li>
+                                </ul>
+                            </p>
+                            <p><strong>File size:</strong> 320.2 MB</p>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/rotation_dataset_example.gif' %}" class="img-responsive img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="{% url 'codeapp:dataset' %}?name=ROTATION.zip">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

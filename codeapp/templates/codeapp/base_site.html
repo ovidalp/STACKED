@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+
+<head>
+    <title>Code Project</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="{% static 'codeapp/img/logo_favicon.png' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'codeapp/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'codeapp/css/chartist.min.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'codeapp/css/main.css'%}">
+
+    {% block style %}{% endblock %}
+</head>
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a id="header-button" class="navbar-brand" href="{% url 'codeapp:index' %}">STACKED</a>
+      </div>
+
+      <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="{% url 'codeapp:presentation' %}">Presentation</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Framework <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'codeapp:comparation' %}">Compare Algorithms</a></li>
+              <li><a href="{% url 'codeapp:factor' %}">Algoritms Factor</a></li>
+            </ul>
+          </li>
+          <!-- <li> -->
+            <!-- <a href="#" data-toggle="tooltip" data-placement="bottom" title="In development">Overall Score</a> -->
+          <!-- </li> -->
+          <li>
+            <a href="{% url 'codeapp:download' %}">Dataset Description</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <script type="text/javascript" src="{% static 'codeapp/js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'codeapp/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'codeapp/js/jquery.cookie.js' %}"></script>
+  <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+  <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

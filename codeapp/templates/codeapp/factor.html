@@ -1,0 +1,103 @@
+{% extends "codeapp/base_site.html" %}
+{% load staticfiles %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'codeapp/css/factor.css'%}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Algoritms Factor</h3>
+                </div>
+                <div class="panel-body">
+
+                    <form id="form_download" class="form-horizontal" method="GET">
+
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">Select a algorithms:</label>
+                        <div class="col-md-10">
+
+                            <div id="algorithms_select" class="row">
+                                {% for alg in alg_list %}
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-warning" data-value="{{ alg }}">{{ alg }}</button>
+                                    </div>
+                                {% endfor %}
+                                <div class="col-md-2">
+                                    <input id="user_result" type="file" name="user_result" class="btn btn-warning"/>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">Analyze</button>
+                        </div>
+                      </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Results</h3>
+                </div>
+                <div id="result_body" class="panel-body">
+
+                    <!-- Tab panes -->
+                    <div id="result_tabs_body" class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="raw_data">
+                            <textarea id="raw_data_area" readonly></textarea>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="conclusion">
+                            <textarea id="conclusion_data_area" readonly></textarea>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="graph_factor">
+                            <div id="graph_content_factor">
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul id="result_tabs" class="nav nav-pills" role="tablist">
+                      <li role="presentation" class="active">
+                        <a href="#raw_data" role="tab" data-toggle="tab" id="raw_tab_button">Raw Data</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#conclusion" role="tab" data-toggle="tab">Conclusion</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#graph_factor" role="tab" data-toggle="tab" id="graph_factor_tab_button">Factor Graph</a>
+                      </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript" src="{% static 'codeapp/js/factor.js' %}"></script>
+
+{% endblock %}

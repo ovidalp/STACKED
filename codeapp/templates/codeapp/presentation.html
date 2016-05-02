@@ -1,0 +1,72 @@
+{% extends "codeapp/base_site.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>Presentation</h2>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Description</div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-justify">
+                            We propose  a novel framework for <a href="{% url 'codeapp:factor' %}">analysis</a> and <a href="{% url 'codeapp:comparation' %}">comparison</a> of keypoints detectors based on well established statistical techniques . By applying the 2kr Factor Design it is possible to analyse a given algorithm in a factor-wise fashion to better understand the algorithm behavior regarding different factors. For comparison, we use the observation paired statistical method to compare the target methods for each factor. The repeatability is the metric used throughout the framework as a criterion for Comparison and Analysis.
+                            </p>
+
+                            <p class="text-justify">
+                            Also, we provide a new large dataset containing RGB-D data and ground-truth data carefully designed for the task of analice  and comparing  keypoint detector algorithms. The dataset consists of four sets of image sequences recorded using a Microsoft Kinect sensor at full frame rate of 30 Hz and sensor resolution of 640×480. For each dataset, it is provided the RGB-D images and the Kinect’s camera pose. Both data are synchronized by recording a timestamps at each acquisition. The ground-truth trajectory of Kinect camera sensor was obtained from a high-accuracy OptiTrack motion capture system with four high-speed tracking cameras (120 Hz).
+                            </p>
+
+                            <p class="text-justify">
+                            The image sequences used for the analysis process is our workload configuration built with all possible factors-levels combination of translation, scale and rotation. The others image sequences are thoroughly designed such as only one factor varies within each sequence. For each sequence, the factor value monotonically increases along the sequence.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/pie.png' %}" class="img-responsive">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/graph1.png' %}" class="img-responsive">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{% static 'codeapp/img/graph2.png' %}" class="img-responsive">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">How use the Framework ?</div>
+                <div class="panel-body">
+
+                    <ol>
+                        <li class="text-justify"><a href="{% url 'codeapp:download' %}">Download</a> the RGB-D sequence needed.</li>
+                        <li class="text-justify">Run the new algorithm with the sequence images downloaded. </li>
+                        <li class="text-justify">Generate an output file in .csv format with the features found for each image in the sequence. The output file must have as many rows as images in the sequence and two columns. The first column should be the name of each image, and in the second column the corresponding features. Save the output csv file with the name of your algorithm.</li>
+                        <li class="text-justify">Upload your <a href="{% url 'codeapp:dataset' %}?name=example_files.zip">output CSV file</a> in our online framework considering the dataset used.</li>
+                    </ol>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

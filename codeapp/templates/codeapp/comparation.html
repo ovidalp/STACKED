@@ -1,0 +1,147 @@
+{% extends "codeapp/base_site.html" %}
+{% load staticfiles %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'codeapp/css/comparation.css'%}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Algoritms Comparation</h3>
+                </div>
+                <div class="panel-body">
+
+                    <form id="form_download" class="form-horizontal" method="POST" enctype="multipart/form-data">
+
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">Select a dataset:</label>
+                        <div class="col-md-10">
+                            <select class="form-control" name="dataset_name">
+                                {% for file_name in dataset_list %}
+                                    <option value="{{ file_name }}">{{ file_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">Select a algorithms:</label>
+                        <div class="col-md-10">
+                            <table id="algorithms_table" class="table">
+                                <tr>
+                                    <th class="col-md-1 text-center">Main</th>
+                                    <th class="col-md-1 text-center">Secondary <span id="select_all_button" data-toggle="tooltip" data-placement="bottom" title="Select All" class="glyphicon glyphicon-ok"></span></th>
+                                    <th class="col-md-10">Name</th>
+                                </tr>
+                                {% for alg in alg_list %}
+                                    <tr>
+                                        <td class="text-center"><input type="radio" name="main_alg" value="{{ alg }}"></td>
+                                        <td class="text-center"><input type="checkbox" name="sec_alg" value="{{ alg }}"></td>
+                                        <td>{{ alg }}</td>
+                                    </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td class="text-center"><input type="radio" name="main_alg" value="user_result"></td>
+                                    <td class="text-center"><input type="checkbox" name="sec_alg" value="user_result"></td>
+                                    <td><p>User result upload: <input id="user_result" type="file" name="user_result"></p></td>
+                                </tr>
+                            </table>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">Compare</button>
+                        </div>
+                      </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Results</h3>
+                </div>
+                <div id="result_body" class="panel-body">
+
+                    <!-- Tab panes -->
+                    <div id="result_tabs_body" class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="raw_data">
+                            <textarea id="raw_data_area" readonly></textarea>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="summary">
+
+                            <table id="table_data" class="table table-hover">
+                                <tr>
+                                    <th class="text-center col-md-2">Comparing Systems</th>
+                                    <th class="text-center col-md-2">Confidence interval</th>
+                                    <th class="text-center col-md-1">Number of Observations</th>
+                                    <th class="text-center col-md-1">Range</th>
+                                    <th class="text-center col-md-1">Sample Mean</th>
+                                    <th class="text-center col-md-1">Sample SD</th>
+                                    <th class="text-center col-md-1">Sample Variance</th>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="conclusion">
+                            <textarea id="conclusion_area" readonly></textarea>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="graph_difference">
+                            <div id="graph_content_difference">
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="graph_zero_mean">
+                            <div id="graph_content_mean">
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul id="result_tabs" class="nav nav-pills" role="tablist">
+                      <li role="presentation" class="active">
+                        <a href="#raw_data" role="tab" data-toggle="tab" id="raw_tab_button">Raw Data</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#summary" role="tab" data-toggle="tab">Summary</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#conclusion" role="tab" data-toggle="tab">Conclusion</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#graph_difference" role="tab" data-toggle="tab" id="graph_diff_tab_button">Graph Difference</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#graph_zero_mean" role="tab" data-toggle="tab" id="graph_mean_tab_button">Graph Zero Mean</a>
+                      </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript" src="{% static 'codeapp/js/comparation.js' %}"></script>
+
+{% endblock %}

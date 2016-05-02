@@ -1,0 +1,56 @@
+body {
+  padding-top: 70px; }
+
+#select_all_button {
+  cursor: pointer; }
+
+.tab-content {
+  margin-top: 10px;
+  padding: 10px; }
+
+#result_body {
+  padding: 0px;
+  margin: 15px; }
+
+#result_tabs_body {
+  height: 400px;
+  margin: 0px;
+  margin-bottom: 10px;
+  padding: 0px; }
+  #result_tabs_body .tab-pane {
+    height: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; }
+  #result_tabs_body #raw_data_area {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  #result_tabs_body #conclusion_area {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  #result_tabs_body #summary {
+    overflow-y: auto; }
+  #result_tabs_body #graph_difference #graph_content_difference {
+    width: 100%;
+    height: 100%; }
+  #result_tabs_body #graph_zero_mean #graph_content_mean {
+    width: 100%;
+    height: 100%; }
+
+/*# sourceMappingURL=comparation.css.map */

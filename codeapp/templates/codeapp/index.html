@@ -1,0 +1,41 @@
+{% extends "codeapp/base_site.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>STACKED</h1>
+    <p>STATISTICAL ANALYSIS AND COMPARISON OF KEYPOINT DETECTORS</p>
+    <p><a class="btn btn-primary btn-lg" href="{% url 'codeapp:presentation' %}" role="button">Getting started</a></p>
+  </div>
+</div>
+
+<div id="explanation" class="container">
+    <div class="row">
+        <div class="col-lg-4 view">
+            <img src="{% static 'codeapp/img/code.jpg' %}" class="img-responsive img-circle">
+            <h3>About the Framework</h3>
+            <p class="lead">Use and <a href="{% url 'codeapp:presentation' %}">description</a>.</p>
+        </div>
+        <div class="col-lg-4 view">
+            <img src="{% static 'codeapp/img/vision.jpg' %}" class="img-responsive img-circle">
+            <h3>Framework Tools</h3>
+            <p class="lead"><a href="{% url 'codeapp:factor' %}">Analysis</a> and <a href="{% url 'codeapp:comparation' %}">comparison</a> of keypoints.</p>
+        </div>
+        <div class="col-lg-4 view">
+            <img src="{% static 'codeapp/img/score.jpg' %}" class="img-responsive img-circle">
+            <h3>Get datasets</h3>
+            <p class="lead">Make <a href="{% url 'codeapp:download' %}">download</a> of ours datasets.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{% static 'codeapp/js/main.js' %}"></script>
+
+{% endblock %}

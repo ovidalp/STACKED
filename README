@@ -1,0 +1,9 @@
+STACKED: STATISTICAL ANALYSIS AND COMPARISON OF KEYPOINT DETECTORS
+
+PRESENTATION
+
+We propose a novel framework for analysis and comparison of keypoints detectors based on well established statistical techniques . By applying the 2kr Factor Design it is possible to analyse a given algorithm in a factor-wise fashion to better understand the algorithm behavior regarding different factors. For comparison, we use the observation paired statistical method to compare the target methods for each factor. The repeatability is the metric used throughout the framework as a criterion for Comparison and Analysis.
+
+Also, we provide a new large dataset containing RGB-D data and ground-truth data carefully designed for the task of analice and comparing keypoint detector algorithms. The dataset consists of four sets of image sequences recorded using a Microsoft Kinect sensor at full frame rate of 30 Hz and sensor resolution of 640×480. For each dataset, it is provided the RGB-D images and the Kinect’s camera pose. Both data are synchronized by recording a timestamps at each acquisition. The ground-truth trajectory of Kinect camera sensor was obtained from a high-accuracy OptiTrack motion capture system with four high-speed tracking cameras (120 Hz).
+
+The image sequences used for the analysis process is our workload configuration built with all possible factors-levels combination of translation, scale and rotation. The others image sequences are thoroughly designed such as only one factor varies within each sequence. For each sequence, the factor value monotonically increases along the sequence.
